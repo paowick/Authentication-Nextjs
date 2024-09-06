@@ -1,5 +1,5 @@
 'use server'
-export async function login(formData) {
+export async function signin(formData) {
     console.log(formData);
     
 }
