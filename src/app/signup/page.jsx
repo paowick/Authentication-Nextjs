@@ -1,4 +1,3 @@
-import React from 'react'
 import { signup } from './actions'
 import Link from "next/link";
 
