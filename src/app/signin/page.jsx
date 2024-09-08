@@ -12,10 +12,10 @@ export default function page() {
         <h2>Sign In</h2>
         <form action={signinAction}>
           <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="user">Username</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
-              name="user"
+              name="email"
               required
               style={{ width: "100%", padding: "8px" }}
             />
