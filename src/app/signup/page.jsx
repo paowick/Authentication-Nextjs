@@ -1,34 +1,15 @@
-import { signup } from './actions'
+'use client'
+import { signup } from './signup'
+import { useFormState } from "react-dom";
 import Link from "next/link";
 
 export default function page() {
+  const [state, signupAction] = useFormState(signup, { message: "" });
   return (
     <>
      <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
       <h2>Sign Up</h2>
-      <form action={signup}>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            required
-            style={{ width: "100%", padding: "8px" }}
-          />
-        </div>
-
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            required
-            style={{ width: "100%", padding: "8px" }}
-          />
-        </div>
-
+      <form action={signupAction}>
         <div style={{ marginBottom: "15px" }}>
           <label htmlFor="username">Username</label>
           <input
@@ -43,7 +24,7 @@ export default function page() {
         <div style={{ marginBottom: "15px" }}>
           <label htmlFor="email">Email</label>
           <input
-            type="email"
+            type="text"
             id="email"
             name="email"
             required
@@ -61,7 +42,17 @@ export default function page() {
             style={{ width: "100%", padding: "8px" }}
           />
         </div>
-
+        <div style={{ marginBottom: "15px" }}>
+          <label htmlFor="confirmpassword">Confirm Password</label>
+          <input
+            type="password"
+            id="password"
+            name="confirmpassword"
+            required
+            style={{ width: "100%", padding: "8px" }}
+          />
+        </div>
+        <p aria-live="polite">{state?.message}</p>
         <button type="submit" style={{ padding: "10px 20px" }}>
           Sign Up
         </button>

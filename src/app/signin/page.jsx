@@ -2,7 +2,7 @@
 import React from "react";
 import { useFormState } from "react-dom";
 import Link from "next/link";
-import { signin } from "./actions";
+import { signin } from "./signin";
 
 export default function page() {
   const [state, signinAction] = useFormState(signin, { message: "" });
