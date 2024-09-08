@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ export default function page() {
 
       if (result.error) {
         console.error(result.error);
+        setError(result.error)
       } else {
         router.push("/");
       }
@@ -53,6 +55,7 @@ export default function page() {
               style={{ width: "100%", padding: "8px" }}
             />
           </div>
+          <p aria-live="polite">{error}</p>
           <button type="submit" style={{ padding: "10px 20px" }}>
             Signin
           </button>
