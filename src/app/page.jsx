@@ -21,21 +21,56 @@ const { data: session, status } = useSession()
   return (
     status === 'authenticated' &&
     session.user && (
-      <div className="flex h-screen items-center justify-center">
-        <div className="bg-white p-6 rounded-md shadow-md">
-          <p>
-            Welcome, <b>{session.user.name}!</b>
-          </p>
-          <p>Email: {session.user.email}</p>
-          <p>Role: {session.user.role}</p>
-          <button
-            onClick={() => signOut({ callbackUrl: '/signin' })}
-            className="w-full bg-blue-500 text-white py-2 rounded"
-          >
-            Logout
-          </button>
-        </div>
-      </div>
+<div
+  style={{
+    display: 'flex',
+    height: '100vh',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <div
+    style={{
+      backgroundColor: 'gray',
+      padding: '24px',
+      borderRadius: '8px',
+      boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    }}
+  >
+    <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+      <img
+        src={session.user.image}
+        style={{
+          borderRadius: '50%',
+          width: '80px',
+          height: '80px',
+          display: 'block',
+          margin: '0 auto',
+        }}
+      />
+    </div>
+    <p>
+      Welcome, <b>{session.user.name}!</b>
+    </p>
+    <p>Email: {session.user.email}</p>
+    <p>Role: {session.user.role}</p>
+    <button
+      onClick={() => signOut({ callbackUrl: '/signin' })}
+      style={{
+        width: '100%',
+        backgroundColor: '#3B82F6',
+        color: 'white',
+        padding: '8px',
+        borderRadius: '4px',
+        border: 'none',
+        cursor: 'pointer',
+      }}
+    >
+      Logout
+    </button>
+  </div>
+</div>
+
     )
   )
 }

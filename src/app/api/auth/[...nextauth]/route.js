@@ -38,10 +38,18 @@ export const authOptions = {
     }),
     GoogleProvider({
     clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    profile(profile) {
+        return {
+          id: profile.sub,
+          name: `${profile.given_name} ${profile.family_name}`,
+          email: profile.email,
+          image: profile.picture,
+        }
+      },
   })
   ],
-  
+
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: 'jwt',
@@ -51,13 +59,14 @@ export const authOptions = {
       if (user) {
         token.id = user.id
         token.role = user.role
-      }
-      return token
-    },
-    session: async ({ session, token }) => {
-      if (session.user) {
+    }
+    return token
+},
+session: async ({ session, token }) => {
+    if (session.user) {
         session.user.id = token.id
         session.user.role = token.role
+        session.user.image = token.picture
       }
       return session
     }
