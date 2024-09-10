@@ -9,6 +9,24 @@ export default function page() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const handleSubmitgoogle = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await signIn("google", {
+        redirect: false,
+        callbackUrl: "/",
+      });
+
+      if (result.error) {
+        console.error(result);
+        setError(result.error);
+      } else {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,7 +38,7 @@ export default function page() {
 
       if (result.error) {
         console.error(result.error);
-        setError(result.error)
+        setError(result.error);
       } else {
         router.push("/");
       }
@@ -64,9 +82,9 @@ export default function page() {
           Don't have an account? <Link href="/signup">Sign Up</Link>
         </div>
         <br />
-         <button
+        <button
           type="button"
-          onClick={() => signIn('google',{ callbackUrl: '/' })}
+          onClick={handleSubmitgoogle}
           className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2 rounded"
         >
           <svg
