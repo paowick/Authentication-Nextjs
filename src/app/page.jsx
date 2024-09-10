@@ -12,10 +12,15 @@ const { data: session, status } = useSession()
   const router = useRouter()
 
   useEffect(() => {
+    console.log(session);
+    
     if (status === 'unauthenticated') {
       router.push('/signin')
     }
-  }, [status, router])
+    if(session?.user.name === null){
+      router.push('/userinit')
+    }
+  }, [status, router, session])
 
   // When after loading success and have session, show profile
   return (
