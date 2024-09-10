@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from "next-auth/providers/google";
+import EmailProvider from "next-auth/providers/email"
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
 import { PrismaAdapter } from '@auth/prisma-adapter'
@@ -9,6 +10,7 @@ const prisma = new PrismaClient()
 
 export const authOptions = {
   providers: [
+
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -36,6 +38,7 @@ export const authOptions = {
         }
       },
     }),
+
     GoogleProvider({
     clientId: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -47,7 +50,20 @@ export const authOptions = {
           image: profile.picture,
         }
       },
-  })
+  }),
+
+  EmailProvider({
+    server: {
+      host: process.env.EMAIL_SERVER_HOST,
+      port: process.env.EMAIL_SERVER_PORT,
+      auth: {
+        user: process.env.EMAIL_SERVER_USER,
+        pass: process.env.EMAIL_SERVER_PASSWORD
+      }
+    },
+    from: process.env.EMAIL_FROM
+  }),
+  
   ],
 
   adapter: PrismaAdapter(prisma),
