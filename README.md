@@ -18,3 +18,40 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```
 npx prisma migrate dev --name init
 ```
+
+
+# 3 way to get session 
+
+1. client 
+   ```js
+    import { useSession } from 'next-auth/react'
+    ```
+2. midleware 
+    ```js
+        import { getToken } from 'next-auth/jwt'
+        import { NextResponse } from 'next/server'
+
+        export async function middleware(request) {
+        const user = await getToken({
+            req: request,
+            secret: process.env.NEXTAUTH_SECRET,
+        })
+
+        // logic
+        }
+    ```
+3. server (api)
+    ```js
+        import { getServerSession } from 'next-auth/next'
+        import { authOptions } from '../auth/[...nextauth]/route'
+
+        export async function GET(request) {
+        const session = await getServerSession(authOptions)
+
+        console.log('session', session)
+
+        return Response.json({
+            message: 'test',
+        })
+        }
+    ```
