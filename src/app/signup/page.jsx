@@ -8,47 +8,7 @@ export default function page() {
   return (
     <>
       <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
-        {/* <h2>Sign Up</h2>
-        <form action={signupAction}>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              required
-              style={{ width: "100%", padding: "8px" }}
-            />
-          </div>
-
-
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              style={{ width: "100%", padding: "8px" }}
-            />
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="confirmpassword">Confirm Password</label>
-            <input
-              type="password"
-              id="password"
-              name="confirmpassword"
-              required
-              style={{ width: "100%", padding: "8px" }}
-            />
-          </div>
-          <p aria-live="polite">{state?.message}</p>
-          <button type="submit" style={{ padding: "10px 20px" }}>
-            Sign Up
-          </button>
-        </form> */}
-
-
+        <h2>Sign Up</h2>
           <div style={{ marginBottom: "15px" }}>
             <label htmlFor="email">Email</label>
             <input

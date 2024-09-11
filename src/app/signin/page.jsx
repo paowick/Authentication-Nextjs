@@ -97,6 +97,9 @@ export default function page() {
           </svg>
           Sign in with Google
         </button>
+        <div style={{ marginTop: "20px" }}>
+          Can't remember password? <Link href="/forgotpassword">Click Here</Link>
+        </div>
       </div>
     </>
   );
