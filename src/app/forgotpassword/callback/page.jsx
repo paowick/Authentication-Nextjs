@@ -1,37 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { reset } from "./reset";
+import { useFormState } from "react-dom";
 export default function ResetPassword() {
+  const [state, Action] = useFormState(reset, { message: "" });
   const searchParams = useSearchParams();
-  const [error, setError] = useState("");
   const [newpassword, setNewPassword] = useState("");
   const [confrimpassword, setConfrimPassword] = useState("");
-  const router = useRouter();
-  async function submitHandler(formData) {
+  async function submitHandler() {
     const email = searchParams.get("email");
     const token = searchParams.get("token");
-
-    const serverResponse = await fetch("/api/resetpassword", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        token,
-        newpassword,
-        confrimpassword,
-      }),
-    });
-
-    const error = await serverResponse.json()
-    if(!error.isPass){
-        setError(error.Msg)
-    }else{
-        router.push("/");
-    }
-    
+    Action({ email, token, newpassword, confrimpassword });
   }
   return (
     <>
@@ -58,7 +38,7 @@ export default function ResetPassword() {
               style={{ width: "100%", padding: "8px" }}
             />
           </div>
-          <p aria-live="polite">{error}</p>
+          <p aria-live="polite">{state?.message}</p>
           <button type="submit" style={{ padding: "10px 20px" }}>
             Reset Password
           </button>
