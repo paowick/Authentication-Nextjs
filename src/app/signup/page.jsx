@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function page() {
-  const [email,setEmail] = useState('')
+  const [email,setEmail] = useState('') 
+  const [active, setActive] = useState(true)
+
   return (
     <>
       <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
@@ -22,7 +24,11 @@ export default function page() {
           </div>
          <button
           type="button"
-          onClick={() => signIn('email',{ callbackUrl: '/',email: email})}
+          disabled={!active}
+          onClick={() => {
+            setActive(!active)
+            signIn('email',{ callbackUrl: '/',email: email})
+          }}
           className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2 rounded"
         >
           <svg
