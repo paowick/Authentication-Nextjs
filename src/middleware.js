@@ -12,13 +12,13 @@ export async function middleware(request) {
 
   // Get the pathname of the request
   const { pathname } = request.nextUrl
-
+  const pathadmin = pathname.startsWith('/admin') 
+ //  console.log(pathadmin);
+  
   // If the pathname starts with /protected and the user is not an admin, redirect to the home page
-  if (
-    pathname.startsWith('/protected') &&
-    (!user || user.role !== 'admin')
-  ) {
-    return NextResponse.redirect(new URL('/', request.url))
+  if (pathadmin) {
+    return NextResponse.next()
+    // return NextResponse.redirect(new URL('/', request.url))
   }
 
   // Continue with the request if the user is an admin or the route is not protected
