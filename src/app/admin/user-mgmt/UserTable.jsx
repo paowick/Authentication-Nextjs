@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from 'next/navigation';
+import { Deleteuser } from "./Deleteuser";
 export default function UserTable({ users }) {
   const router = useRouter();
   return (
@@ -24,7 +25,7 @@ export default function UserTable({ users }) {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td><button onClick={()=> router.push(`/admin/user-mgmt/edit/${user.id}`)} >Edit</button></td>
-              <td><button>Delete</button></td>
+              <td><button onClick={()=> Deleteuser(user.id)} >Delete</button></td>
             </tr>
           ))}
         </tbody>
