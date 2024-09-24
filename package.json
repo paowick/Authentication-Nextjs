@@ -1,5 +1,5 @@
 {
-  "name": "authentication-nextjs",
+  "name": "user-mgmt-nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
