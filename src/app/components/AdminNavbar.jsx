@@ -1,11 +1,9 @@
 'use client'
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link'; // Import Next.js Link component
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

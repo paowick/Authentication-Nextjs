@@ -1,5 +1,5 @@
 import AdminNavbar from '@/app/components/AdminNavbar'
-import UserTable from '@/app/components/UserTable'
+import UserTable from './UserTable';
 import React from 'react'
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
