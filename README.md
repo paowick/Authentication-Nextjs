@@ -58,3 +58,8 @@ npx prisma migrate dev --name init
 
 # for google auth
 -https://next-auth.js.org/providers/google 
+
+
+# bug list 
+- session not change when update
+- in setup user if input fail it too quick to logout find new solution 
