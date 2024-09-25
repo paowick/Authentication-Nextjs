@@ -14,14 +14,14 @@ export default function page() {
     try {
       const result = await signIn("google", {
         redirect: false,
-        callbackUrl: "/",
+        callbackUrl: "/profile",
       });
 
       if (result.error) {
         console.error(result);
         setError(result.error);
       } else {
-        router.push("/");
+        router.push("/profile");
       }
     } catch (error) {
       console.log("error", error);
@@ -40,7 +40,7 @@ export default function page() {
         console.error(result.error);
         setError(result.error);
       } else {
-        router.push("/");
+        router.push("/profile");
       }
     } catch (error) {
       console.log("error", error);
