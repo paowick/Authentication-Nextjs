@@ -17,6 +17,7 @@ export default function Home() {
     if (session?.user.name === null) {
       router.push("/userinit");
     }
+    router.push("/profile")
   }, [status, router, session]);
   return (
     <>first page</>
