@@ -1,10 +1,9 @@
 "use client";
-import { useSession, signOut } from "next-auth/react";
+import { useSession,signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-
-export default function Profile({ user }) {
-  const { data: session, status } = useSession();
+export default function Profile({user}) {
+const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
@@ -13,12 +12,8 @@ export default function Profile({ user }) {
     if (status === "unauthenticated") {
       router.push("/signin");
     }
-    if (session?.user.name === null) {
-      router.push("/userinit");
-    }
   }, [status, router, session]);
 
-  // When after loading success and have session, show profile
   return (
     status === "authenticated" &&
     user && (

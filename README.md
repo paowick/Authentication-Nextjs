@@ -61,5 +61,3 @@ npx prisma migrate dev --name init
 
 
 # bug list 
-- session not change when update
-- in setup user if input fail it too quick to logout find new solution 

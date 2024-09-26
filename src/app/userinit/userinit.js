@@ -24,8 +24,7 @@ export async function userinit(prevState, formData) {
         },
     })
     
-    return redirect('/')
-    // return { message: Msg }
+    return redirect('/profile')
 
 }
 

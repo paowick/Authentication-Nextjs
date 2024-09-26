@@ -44,7 +44,7 @@ export default function page() {
             />
           </div>
           <p aria-live="polite">{state?.message}</p>
-          <button type="submit" onClick={()=> signOut({ callbackUrl: '/signin' })} style={{ padding: "10px 20px" }}>
+          <button type="submit" style={{ padding: "10px 20px" }}>
             Comfrim
           </button>
         </form>
