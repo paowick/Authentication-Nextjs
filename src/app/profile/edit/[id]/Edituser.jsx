@@ -23,7 +23,7 @@ export default function Edituser({ user }) {
     e.preventDefault();
     // Handle form submission, e.g., send data to the server
     console.log("Form data submitted:", formData);
-    Edituseraction(formData, user.id);
+    Edituseraction(formData);
   };
 
   return (
