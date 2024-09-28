@@ -51,7 +51,7 @@ const { data: session, status } = useSession();
           <p>Email: {user.email}</p>
           <p>Role: {user.role}</p>
           <button
-            onClick={() => router.push(`/profile/edit/${user.id}`)}
+            onClick={() => router.push(`/profile/edit/`)}
             style={{
               width: "100%",
               backgroundColor: "#3B82F6",
